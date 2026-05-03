@@ -41,18 +41,17 @@ public class SistemaTrafico {
         return gVehiculos.listarVehiculos();
     }
 
-    public void incorporarCalle(String nombCalle, String nombInterseccion){
+    public void incorporarCalle(String nombCalle, String nombInterseccion, int tiempoVerde){
         if(!lstIntersecciones.esVacio()){
-        Interseccion unaInterseccion = lstIntersecciones.buscar
-        (interseccion -> interseccion.getNombre().equals(nombInterseccion));
-        Calle unaCalle = unaInterseccion.obtenerCalle(nombCalle);
-        if(unaCalle == null){
-            unaInterseccion.incorporarCalle(nombCalle);
-        }
-        else{
-            System.out.println(nombCalle + " ya existe");
-        }
-
+            Interseccion unaInterseccion = lstIntersecciones.buscar
+            (interseccion -> interseccion.getNombre().equals(nombInterseccion));
+            Calle unaCalle = unaInterseccion.obtenerCalle(nombCalle);
+            if(unaCalle == null){
+                unaInterseccion.incorporarCalle(nombCalle, tiempoVerde);
+            }
+            else{
+                System.out.println(nombCalle + " ya existe");
+            }
         }
 
     }

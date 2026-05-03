@@ -16,9 +16,9 @@ public class Interseccion {
         cruce = new ListaEnlazada<>();
     }
 
-    public void incorporarCalle(String unNombre){
+    public void incorporarCalle(String unNombre, int tiempoVerde){
         if(!unNombre.equals(null) && !unNombre.equals("")){
-            Calle unCalle = new Calle(unNombre);
+            Calle unCalle = new Calle(unNombre, tiempoVerde);
             cruce.agregar(unCalle);
         }
     }
@@ -46,22 +46,11 @@ public class Interseccion {
         return false;
     }
 
-    public void circularSemaforo(){
-        for (int i = 0; i == 20; i ++){
-            cruce.realizarAccion(calle ->{
-
-                for(int k = 0; k == 5; k++)
-                    calle.circular();
-                if(calle.getSemaforo().equals("verde"))
-                    calle.setSemaforo("amarillo");
-                else if (calle.getSemaforo().equals("amarillo"))
-                    calle.setSemaforo("rojo");
-                else
-                    calle.setSemaforo("verde");
-
-            });
-
+    public void circularSemaforo(int ciclos){
+        for (int i = 0; i < ciclos; i++) {
+            cruce.realizarAccion(calle -> calle.circular());
         }
+          
     }
 
     public String getNombre(){

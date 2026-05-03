@@ -14,7 +14,7 @@ public class InterseccionTest {
     public void incorporarCalleDebePermitirObtenerla() {
         Interseccion interseccion = new Interseccion("Cruce 1");
 
-        interseccion.incorporarCalle("18 de Julio");
+        interseccion.incorporarCalle("18 de Julio",10);
 
         Calle calle = interseccion.obtenerCalle("18 de Julio");
 
@@ -37,7 +37,7 @@ public class InterseccionTest {
         sistema.registrarVehiculo("auto", 10, "Toyota");
 
         Interseccion interseccion = new Interseccion("Cruce 1");
-        interseccion.incorporarCalle("18 de Julio");
+        interseccion.incorporarCalle("18 de Julio", 10);
 
         boolean resultado = interseccion.incorporarVehiculo(1, "18 de Julio");
 

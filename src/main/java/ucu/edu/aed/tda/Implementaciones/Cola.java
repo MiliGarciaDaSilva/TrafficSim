@@ -17,8 +17,6 @@ public class Cola<T> implements TDACola<T> {
     
     int cantidad;
 
-    
-
     public void agregar(T elem){
         throw new IndexOutOfBoundsException("Funcion no valida para Cola"); 
     }
@@ -129,7 +127,7 @@ public class Cola<T> implements TDACola<T> {
     }
 
 
-
+    
     public T frente(){
 
         return primero.getDato();

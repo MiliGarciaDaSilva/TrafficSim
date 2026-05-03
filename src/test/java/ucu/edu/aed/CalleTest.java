@@ -12,14 +12,14 @@ public class CalleTest {
 
     @Test
     public void calleNuevaDebeTenerSemaforoRojo() {
-        Calle calle = new Calle("18 de Julio");
+        Calle calle = new Calle("18 de Julio", 10);
 
         assertEquals("rojo", calle.getSemaforo());
     }
 
     @Test
     public void incorporarVehiculoDebeAumentarCola() {
-        Calle calle = new Calle("Rivera");
+        Calle calle = new Calle("Rivera", 10);
         Vehiculo v = new Vehiculo(1, "auto", 10, "Fiat");
 
         calle.incorporarVehiculo(v);
@@ -29,7 +29,7 @@ public class CalleTest {
 
     @Test
     public void siSemaforoEstaVerdeVehiculoDebeCircular() {
-        Calle calle = new Calle("Bvar Artigas");
+        Calle calle = new Calle("Bvar Artigas",10);
         Vehiculo v = new Vehiculo(1, "auto", 10, "Fiat");
 
         calle.incorporarVehiculo(v);
@@ -42,7 +42,7 @@ public class CalleTest {
 
     @Test
     public void siSemaforoEstaRojoVehiculoNoDebeCircular() {
-        Calle calle = new Calle("Bvar Artigas");
+        Calle calle = new Calle("Bvar Artigas", 10);
         Vehiculo v = new Vehiculo(1, "auto", 10, "Fiat");
 
         calle.incorporarVehiculo(v);
