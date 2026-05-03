@@ -15,14 +15,14 @@ public class Main {
     GestionVehiculos gestionVehiculos = GestionVehiculos.getInstancia();
 
     // Crear 8 vehículos de ejemplo
-    Vehiculo vehiculo1 = gestionVehiculos.crearVehiculo(1, "Auto", 5);
-    Vehiculo vehiculo2 = gestionVehiculos.crearVehiculo(2, "Moto", 3);
-    Vehiculo vehiculo3 = gestionVehiculos.crearVehiculo(3, "Camión", 8);
-    Vehiculo vehiculo4 = gestionVehiculos.crearVehiculo(4, "Bicicleta", 2);
-    Vehiculo vehiculo5 = gestionVehiculos.crearVehiculo(5, "Auto", 4);
-    Vehiculo vehiculo6 = gestionVehiculos.crearVehiculo(6, "Moto", 3);
-    Vehiculo vehiculo7 = gestionVehiculos.crearVehiculo(7, "Autobús", 6);
-    Vehiculo vehiculo8 = gestionVehiculos.crearVehiculo(8, "Auto", 5);
+    Vehiculo vehiculo1 = gestionVehiculos.crearVehiculo("Auto", 5);
+    Vehiculo vehiculo2 = gestionVehiculos.crearVehiculo("Moto", 3);
+    Vehiculo vehiculo3 = gestionVehiculos.crearVehiculo("Camión", 8);
+    Vehiculo vehiculo4 = gestionVehiculos.crearVehiculo("Bicicleta", 2);
+    Vehiculo vehiculo5 = gestionVehiculos.crearVehiculo("Auto", 4);
+    Vehiculo vehiculo6 = gestionVehiculos.crearVehiculo("Moto", 3);
+    Vehiculo vehiculo7 = gestionVehiculos.crearVehiculo("Autobús", 6);
+    Vehiculo vehiculo8 = gestionVehiculos.crearVehiculo("Auto", 5);
 
     // Crear semáforos
     Semaforo semaforo1 = new Semaforo(EstadoSemaforo.ROJO, 10);

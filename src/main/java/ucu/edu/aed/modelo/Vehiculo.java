@@ -1,19 +1,23 @@
 package ucu.edu.aed.modelo;
 
 public class Vehiculo implements Comparable<Vehiculo>{
-  public int id;
+  private int id;
   public String tipo;
   public int tiempoLlegada;
+  public static int contadorId = 0;
   
-  public Vehiculo(int id, String tipo, int tiempoLlegada){
-    this.id = id;
+  public Vehiculo(String tipo, int tiempoLlegada){
+    this.id = ++contadorId;
     this.tipo = tipo;
     this.tiempoLlegada = tiempoLlegada;
   }
 
+  public int getId(){
+    return id;
+  }
   @Override
   public int compareTo(Vehiculo otroVehiculo) {
-    return Integer.compare(id, otroVehiculo.id);
+    return Integer.compare(id, otroVehiculo.getId());
   }
 
   public int getTiempoLlegada() {

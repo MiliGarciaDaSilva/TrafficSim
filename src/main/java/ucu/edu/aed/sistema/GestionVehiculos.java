@@ -22,8 +22,8 @@ public class GestionVehiculos {
     return instancia;
   }
 
-  public Vehiculo crearVehiculo(int id, String tipo, int tiempoLlegada){
-    Vehiculo v = new Vehiculo(id, tipo, tiempoLlegada);
+  public Vehiculo crearVehiculo(String tipo, int tiempoLlegada){
+    Vehiculo v = new Vehiculo(tipo, tiempoLlegada);
     registrarVehiculo(v);
     return v;
   }
@@ -44,7 +44,7 @@ public class GestionVehiculos {
       //hacemos esto porque el metodo eliminar espera un Comparable<T> y nosotros queremos buscar por un int
       @Override
       public int compareTo(Vehiculo otro) {
-        return Integer.compare(id, otro.id);
+        return Integer.compare(id, otro.getId());
       }
     });
   }
