@@ -1,7 +1,9 @@
 package ucu.edu.aed.tda.Implementaciones;
 
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import ucu.edu.aed.tda.Interfaces.TDACola;
@@ -261,5 +263,17 @@ public class ColaArregloCircular<T> implements TDACola<T> {
     public boolean eliminar(T elem) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
+    }
+
+    @Override
+    public TDALista<T> ordenar(Comparator<T> comparator) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'ordenar'");
+    }
+
+    @Override
+    public void realizarAccion(Consumer<T> accion) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'realizarAccion'");
     }
 }

@@ -5,13 +5,13 @@ import ucu.edu.aed.modelo.EstadoSemaforo;
 import ucu.edu.aed.modelo.Interseccion;
 import ucu.edu.aed.modelo.Semaforo;
 import ucu.edu.aed.modelo.Vehiculo;
-import ucu.edu.aed.sistema.GestionTransito;
+
 import ucu.edu.aed.sistema.GestionVehiculos;
 import ucu.edu.aed.tda.Implementaciones.ColaArregloCircular;
 
 public class Main {
   public static void main(String[] args) {
-    GestionTransito gestionTransito = new GestionTransito();
+    /*GestionTransito gestionTransito = new GestionTransito();
     GestionVehiculos gestionVehiculos = GestionVehiculos.getInstancia();
 
     // Crear 8 vehículos de ejemplo
@@ -65,6 +65,6 @@ public class Main {
 
     System.out.println("\n============== Prueba con 3 intersecciones ============== \n");
 
-    gestionTransito.simularCiclos(7);
+    gestionTransito.simularCiclos(7);/* */
   }
 }
