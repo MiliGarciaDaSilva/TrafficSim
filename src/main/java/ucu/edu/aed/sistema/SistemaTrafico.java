@@ -29,6 +29,14 @@ public class SistemaTrafico {
         gVehiculos.registrarVehiculo(unTipo, unTiempo, unaMarca);
     }
 
+    public void incorporarVehiculo(int idVehiculo,String interseccion ,String nombCalle){
+        Interseccion unaInterseccion = lstIntersecciones.buscar
+        (interseccion1 -> interseccion1.getNombre().equals(interseccion));
+        if(unaInterseccion != null){
+            unaInterseccion.incorporarVehiculo(idVehiculo, nombCalle);
+        }
+    }
+
     public Vehiculo obtenerVehiculo(int unId){
         return gVehiculos.obtenerVehiculo(unId);
     }
@@ -41,16 +49,32 @@ public class SistemaTrafico {
         return gVehiculos.listarVehiculos();
     }
 
+    public void incorporarInterseccion(String unNombre){
+        Interseccion unaInterseccion = lstIntersecciones.buscar
+        (interseccion -> interseccion.getNombre().equals(unNombre));
+        if(unaInterseccion == null){
+            lstIntersecciones.agregar(new Interseccion(unNombre));
+        }
+        else{
+            System.out.println(unNombre + " ya existe");
+        }
+    }
+
     public void incorporarCalle(String nombCalle, String nombInterseccion, int tiempoVerde){
         if(!lstIntersecciones.esVacio()){
             Interseccion unaInterseccion = lstIntersecciones.buscar
             (interseccion -> interseccion.getNombre().equals(nombInterseccion));
-            Calle unaCalle = unaInterseccion.obtenerCalle(nombCalle);
-            if(unaCalle == null){
-                unaInterseccion.incorporarCalle(nombCalle, tiempoVerde);
-            }
-            else{
-                System.out.println(nombCalle + " ya existe");
+            if(unaInterseccion == null){
+                System.out.println(nombInterseccion + " no existe");
+                return;
+            }else{
+                Calle unaCalle = unaInterseccion.obtenerCalle(nombCalle);
+                if(unaCalle == null){
+                    unaInterseccion.incorporarCalle(nombCalle, tiempoVerde);
+                }
+                else{
+                    System.out.println(nombCalle + " ya existe");
+                }
             }
         }
 

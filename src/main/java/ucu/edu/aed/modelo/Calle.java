@@ -26,18 +26,31 @@ public class Calle {
     }
 
     public void circular(){ // Posiblemente en Interseccion cambio los estados del semaforo
+        System.out.println("Circulando en calle: " + this.nombre + " - Semaforo: " + this.semaforo);
         if(semaforo.equals("verde")){
+            System.out.println("Vehiculos circulando en calle: " + this.colaVehiculos.tamaño());
             if(!colaVehiculos.esVacio()){
                 int tiempo = this.tiempoVerde;
                 while (!colaVehiculos.esVacio() && tiempo >= colaVehiculos.frente().getTiempoViaje()){
                         Vehiculo vehiculoFrente = colaVehiculos.quitaDeCola();
-                        tiempo -= vehiculoFrente.getTiempoViaje();                    
+                        tiempo -= vehiculoFrente.getTiempoViaje();       
+                        vehiculoFrente.finalizarViaje();             
                 }
+                if(!colaVehiculos.esVacio())
+                if(colaVehiculos.frente().getTiempoViaje() > tiempo){
+                    colaVehiculos.frente().disminuirTiempoViaje(tiempo);
+                    tiempo = 0;
+                }
+
+                System.out.println("Vehiculos restantes en calle: " + this.colaVehiculos.tamaño());
             }
+            System.out.println("Semaforo cambiando a amarillo...");
             semaforo = "amarillo"; 
         } else if(semaforo.equals("amarillo")){
+            System.out.println("Semaforo cambiando a rojo...");
             semaforo = "rojo";
         } else {
+            System.out.println("Semaforo cambiando a verde...");
             semaforo = "verde";
         }
     

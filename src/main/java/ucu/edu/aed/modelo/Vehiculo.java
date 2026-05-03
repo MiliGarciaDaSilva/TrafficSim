@@ -24,8 +24,8 @@ public class Vehiculo {
         return tiempoViaje;
     }
     
-    public void disminuirTiempoViaje(){
-        this.tiempoViaje--;
+    public void disminuirTiempoViaje(int unTiempo){
+        this.tiempoViaje -= unTiempo;
     }
 
     public void finalizarViaje(){

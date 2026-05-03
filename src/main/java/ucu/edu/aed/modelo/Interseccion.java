@@ -35,11 +35,16 @@ public class Interseccion {
         Vehiculo unVehiculo = gestVehiculos.obtenerVehiculo(unId);
         if(unVehiculo != null){
             Calle calle = obtenerCalle(unaCalle);
-            TDACola<Vehiculo> unaCola = calle.getCola();
-            if(unaCola.contiene(unVehiculo) == false){
-                if(calle != null){
-                    calle.incorporarVehiculo(unVehiculo);
-                    return true;
+            if(unaCalle == null){
+                System.out.println(unaCalle + " no existe");
+                return false;
+            }else{
+                TDACola<Vehiculo> unaCola = calle.getCola();
+                if(unaCola.contiene(unVehiculo) == false){
+                    if(calle != null){
+                        calle.incorporarVehiculo(unVehiculo);
+                        return true;
+                    }
                 }
             }
         }
@@ -48,7 +53,11 @@ public class Interseccion {
 
     public void circularSemaforo(int ciclos){
         for (int i = 0; i < ciclos; i++) {
-            cruce.realizarAccion(calle -> calle.circular());
+            cruce.realizarAccion(calle ->{ 
+                if(calle == cruce.obtener(0))
+                    calle.setSemaforo("verde");
+                calle.circular();
+            });
         }
           
     }
