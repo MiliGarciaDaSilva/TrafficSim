@@ -1,51 +1,69 @@
 package ucu.edu.aed.sistema;
 
+import java.io.EOFException;
+import java.util.function.Predicate;
+
 import ucu.edu.aed.modelo.Vehiculo;
-import ucu.edu.aed.tda.Implementaciones.AVLArbol;
 import ucu.edu.aed.tda.Implementaciones.ListaEnlazada;
+import ucu.edu.aed.tda.Interfaces.TDALista;
+
 
 public class GestionVehiculos {
-  //hago un arbol de registroPrincipal en el que se guarden todos los vehiculos registrados en todos las intersecciones, para poder eliminar un arbol por id de forma mas eficiente
-  public AVLArbol<Vehiculo> registroPrincipal;
 
-  //singleton
-  private static GestionVehiculos instancia = null;
+    TDALista<Vehiculo> ListaVehiculos;
+    
+//  SINGLETON DE GESTION VEHICULOS
+    private static GestionVehiculos instancia;
 
-  private GestionVehiculos(){
-    this.registroPrincipal = new AVLArbol<>();
-  }
-
-  public static GestionVehiculos getInstancia(){
-    if (instancia == null) {
-      instancia = new GestionVehiculos();
+    private GestionVehiculos() {
+        ListaVehiculos = new ListaEnlazada<>();
     }
-    return instancia;
-  }
+    
+    public static GestionVehiculos getInstancia() {
+        if (instancia == null) {
+            instancia = new GestionVehiculos();
+        }
+        return instancia;
+    }
 
-  public Vehiculo crearVehiculo(String tipo, int tiempoLlegada){
-    Vehiculo v = new Vehiculo(tipo, tiempoLlegada);
-    registrarVehiculo(v);
-    return v;
-  }
+    public void registrarVehiculo(String unTipo,int unTiempo, String unaMarca){
+        if(unTiempo > 0){
+            if(ListaVehiculos.tamaño() > 0 ){
+            Vehiculo ultimo = ListaVehiculos.obtener(ListaVehiculos.tamaño() - 1); 
+            Vehiculo unVehiculo = new Vehiculo(ultimo.getIdentificador() + 1, unTipo, unTiempo, unaMarca);
+            ListaVehiculos.agregar(unVehiculo);
+            }
+            else{
+                Vehiculo unVehiculo = new Vehiculo( 1, unTipo, unTiempo, unaMarca);
+                ListaVehiculos.agregar(unVehiculo);
+            }
+        }
+    }
 
-  private boolean registrarVehiculo(Vehiculo vehiculo){
-    return registroPrincipal.insertar(vehiculo);
-  }
+    public Vehiculo obtenerVehiculo(int id){
+        if(id > 0)
+            return ListaVehiculos.buscar(Vehiculo -> Vehiculo.getIdentificador() == id);
+        throw new IndexOutOfBoundsException();
+    }
 
-  public ListaEnlazada<Vehiculo> listarVehiculos(){
-    ListaEnlazada<Vehiculo> resultado = new ListaEnlazada<>();
-    registroPrincipal.inOrder(vehiculo -> resultado.agregar(vehiculo));
-    return resultado;
-  }
+    public boolean retirarVehiculo(int unId){
+        Vehiculo unVehiculo = ListaVehiculos.buscar(Vehiculo -> Vehiculo.getIdentificador() == unId);
+        if(unVehiculo != null)
+            return ListaVehiculos.eliminar(unVehiculo);
+        return false;
+    }
 
-  public boolean eliminarVehiculo(int id){
-    return registroPrincipal.eliminar(new Comparable<Vehiculo>() {
-      //creamos un vehiculo con el mismo id que estamos buscando, cuando el id sea igual, lo eliminamos
-      //hacemos esto porque el metodo eliminar espera un Comparable<T> y nosotros queremos buscar por un int
-      @Override
-      public int compareTo(Vehiculo otro) {
-        return Integer.compare(id, otro.getId());
-      }
-    });
-  }
+    public String listarVehiculos(){
+       // String listado = ((ListaEnlazada<Vehiculo>) ListaVehiculos).listarElementos(); 
+       // The method listarElementos() is undefined for the type TDALista<Vehiculo>
+       if(!ListaVehiculos.esVacio()){
+        String listado = "";
+        for(int i = 0 ; i < ListaVehiculos.tamaño(); i++) {
+            listado += ListaVehiculos.obtener(i);
+        }
+        return listado;
+       }
+       return null;
+    }
+
 }

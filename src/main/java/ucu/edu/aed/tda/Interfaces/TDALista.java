@@ -1,5 +1,7 @@
 package ucu.edu.aed.tda.Interfaces;
 
+import java.util.Comparator;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
@@ -112,7 +114,7 @@ public interface TDALista<T> {
      * @param comparator el comparador que define el orden de los elementos
      * @return una lista ordenada según el criterio indicado
      */
-//    TDALista<T> ordenar(Comparator<T> comparator);
+    TDALista<T> ordenar(Comparator<T> comparator);
 
     /**
      * Retorna la cantidad de elementos almacenados en la lista.
@@ -135,4 +137,6 @@ public interface TDALista<T> {
      * <p>Luego de invocar este método, la lista queda vacía.</p>
      */
     void vaciar();
+
+    void realizarAccion(Consumer<T> accion);
 }
