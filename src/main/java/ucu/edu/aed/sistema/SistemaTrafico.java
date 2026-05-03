@@ -56,6 +56,19 @@ public class SistemaTrafico {
 
     }
 
+    public void simularTrafico(String unNombre,int ciclos){
+        Interseccion unaInterseccion = lstIntersecciones.buscar
+        (interseccion -> interseccion.getNombre().equals(unNombre));
+        if(unaInterseccion != null){
+            unaInterseccion.circularSemaforo(ciclos);
+        }
+        else{
+            System.out.println(unNombre + " no existe");
+        }
+    }
+
+    
+
     
 
 
