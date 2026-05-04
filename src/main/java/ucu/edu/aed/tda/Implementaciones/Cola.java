@@ -160,9 +160,6 @@ public class Cola<T> implements TDACola<T> {
         
     }
 
-    @Override
-    public void realizarAccion(Consumer<T> accion) {
-        throw new IndexOutOfBoundsException("Funcion no valida para Cola"); 
-    }
+    
 
 }

@@ -138,5 +138,5 @@ public interface TDALista<T> {
      */
     void vaciar();
 
-    void realizarAccion(Consumer<T> accion);
+    
 }

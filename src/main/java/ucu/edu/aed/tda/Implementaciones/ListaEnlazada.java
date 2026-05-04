@@ -37,15 +37,7 @@ public class ListaEnlazada<T> implements TDALista<T> {
    
     }
 
-    @Override
-    public void realizarAccion(Consumer<T> accion) {
-    TDANodo<T> nodoActual = primero;
-    while (nodoActual != null) {
-        accion.accept(nodoActual.getDato()); 
-        nodoActual = nodoActual.getSiguiente();
-    }
-    }
-
+    
     public void agregar(int index, T elem){
         if(index >= 0){
             if (esVacio()){
