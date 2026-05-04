@@ -53,11 +53,9 @@ public class Interseccion {
 
     public void circularSemaforo(int ciclos){
         for (int i = 0; i < ciclos; i++) {
-            cruce.realizarAccion(calle ->{ 
-                if(calle == cruce.obtener(0))
-                    calle.setSemaforo("verde");
-                calle.circular();
-            });
+            Calle unaCalle = cruce.obtener(i % cruce.tamaño());
+            unaCalle.setSemaforo("verde");
+            unaCalle.circular();
         }
           
     }

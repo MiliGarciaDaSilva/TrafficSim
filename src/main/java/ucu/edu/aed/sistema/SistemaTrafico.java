@@ -50,6 +50,7 @@ public class SistemaTrafico {
     }
 
     public void incorporarInterseccion(String unNombre){
+        if(!unNombre.isEmpty()){
         Interseccion unaInterseccion = lstIntersecciones.buscar
         (interseccion -> interseccion.getNombre().equals(unNombre));
         if(unaInterseccion == null){
@@ -59,7 +60,7 @@ public class SistemaTrafico {
             System.out.println(unNombre + " ya existe");
         }
     }
-
+}
     public void incorporarCalle(String nombCalle, String nombInterseccion, int tiempoVerde){
         if(!lstIntersecciones.esVacio()){
             Interseccion unaInterseccion = lstIntersecciones.buscar

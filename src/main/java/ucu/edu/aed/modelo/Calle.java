@@ -36,7 +36,7 @@ public class Calle {
                         tiempo -= vehiculoFrente.getTiempoViaje();       
                         vehiculoFrente.finalizarViaje();             
                 }
-                if(!colaVehiculos.esVacio())
+                if(!colaVehiculos.esVacio()){
                 if(colaVehiculos.frente().getTiempoViaje() > tiempo){
                     colaVehiculos.frente().disminuirTiempoViaje(tiempo);
                     tiempo = 0;
@@ -46,13 +46,10 @@ public class Calle {
             }
             System.out.println("Semaforo cambiando a amarillo...");
             semaforo = "amarillo"; 
-        } else if(semaforo.equals("amarillo")){
             System.out.println("Semaforo cambiando a rojo...");
-            semaforo = "rojo";
-        } else {
-            System.out.println("Semaforo cambiando a verde...");
-            semaforo = "verde";
-        }
+                semaforo = "rojo";
+        } 
+        }  
     
         
     }
